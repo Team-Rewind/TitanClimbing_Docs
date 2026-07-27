@@ -12,8 +12,10 @@ export default defineConfig({
 				{
 					label: 'Overview',
 					items: [
-						{ label: 'Home', slug: '' },
-						{ label: 'Get Started', slug: 'get-started' },
+						{
+							label: 'Get Started',
+							items: [{ autogenerate: { directory: 'get-started' } }],
+						},
 					],
 				},
 				{
