@@ -41,3 +41,4 @@ Bind separate actions as appropriate for your game:
 - **Stop Climbing** to return to the idle state.
 
 `StartClimbing` succeeds only when it finds a valid climbable surface that meets the component's distance, angle, and facing requirements.
+
