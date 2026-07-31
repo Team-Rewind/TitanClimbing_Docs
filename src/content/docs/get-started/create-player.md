@@ -1,32 +1,43 @@
 ---
 title: Create Player
-description: Create player character.
+description: Configure a character to find, climb, and walk on Titan surfaces.
 ---
 
-## 0. Open Your Player Character Blueprint
+## 1. Open the player Character Blueprint
 
-First, open your primary player character Blueprint. For this guide, we will use `BP_ThirdPersonCharater`.
+Open your primary player character Blueprint. The owner must be an `ACharacter`: the climbing component reads its capsule, movement component, skeletal mesh, and animation instance.
 
-***Player Character Blueprint 이미지***
+## 2. Add the components
 
----
+Add a **Titan Climbing** component in the Components panel. It makes your character climbing!
 
-## 1. Add the Titan Climbing Component
+![Titan Climbing component](../../../assets/step2-titan-climbing.png)
 
-In the Components tab, add a **Titan Climbing** component. This component makes the character to climb to the titan character.
+Add a **Titan Walking** component when the character must walk on a moving skeletal climbable. It creates a local collision patch from nearby animated surface triangles.
 
-![alt text](../../../assets/step2-titan-climbing.png)
+![Titan Walking component](../../../assets/step2-titan-walking.png)
 
-You also have to add a **Titan Walking** component. This component makes the character to walk above the titan character.
+## 3. Configure climbing
 
-![alt text](../../../assets/step2-titan-walking.png)
+Assign a `Titan Climb Rig Profile` that matches the character skeleton. The profile defines each hand and foot's effector/IK bones, probe origin, reach limits, and animation curves.
 
----
+- Aware that **Climbable Trace Channel** property is for climbing static meshes.
 
-## 2. Attach the input
+To use climb-up and climb-exit transitions, use an Animation Blueprint derived from `UTitanClimbAnimInstance` and assign its montages.
 
-For properly climbing, we need to wire up the input action to the **Titan Climbing** component. Like `ACharacter::Move` node, just execute `UTitanClimbingComponent::SetClimbInput` node as well.
+## 4. Attach input
 
-![alt text](../../../assets/step3-climb-input.png)
+Send the normalized 2D movement input used by the character to **Set Climb Input**. It moves the character along the active surface while climbing.
 
----
+![Climb input setup](../../../assets/step3-climb-input.png)
+
+In this tutorial, we will just use simple input binding for `Start Climbing`.
+
+![Climb input](image.png)
+
+Bind separate actions as appropriate for your game:
+
+- **Start Climbing** to query the surface in front of the character.
+- **Stop Climbing** to return to the idle state.
+
+`StartClimbing` succeeds only when it finds a valid climbable surface that meets the component's distance, angle, and facing requirements.

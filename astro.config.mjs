@@ -6,7 +6,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Titan Climbing UE',
+			title: 'Titan Climbing',
 			description: 'Documentation for the Titan Climbing Unreal Engine plugin.',
 			sidebar: [
 				{
