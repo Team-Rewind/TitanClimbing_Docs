@@ -1,5 +1,5 @@
 ---
-title: Create Player
+title: Create Climbing Player
 description: Configure a character to find, climb, and walk on Titan surfaces.
 ---
 
@@ -21,7 +21,7 @@ Add a **Titan Walking** component when the character must walk on a moving skele
 
 Assign a `Titan Climb Rig Profile` that matches the character skeleton. The profile defines each hand and foot's effector/IK bones, probe origin, reach limits, and animation curves.
 
-- Aware that **Climbable Trace Channel** property is for climbing static meshes.
+Set **Climbable Trace Channel** to the trace channel used by static climbable meshes. Configure matching collision responses on those meshes.
 
 To use climb-up and climb-exit transitions, use an Animation Blueprint derived from `UTitanClimbAnimInstance` and assign its montages.
 
@@ -41,4 +41,3 @@ Bind separate actions as appropriate for your game:
 - **Stop Climbing** to return to the idle state.
 
 `StartClimbing` succeeds only when it finds a valid climbable surface that meets the component's distance, angle, and facing requirements.
-

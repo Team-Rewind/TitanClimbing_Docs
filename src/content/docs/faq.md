@@ -1,32 +1,10 @@
 ---
 title: FAQ
-description: Common setup questions and troubleshooting for Titan Climbing.
+description: Skeleton compatibility and Animation Blueprint retargeting.
 ---
 
-## Do I need to restart Unreal Engine after installing?
+## What if your character skeleton is different?
 
-Usually, yes. If the Plugin Manager asks for a restart, restart before continuing.
+Create a `Titan Climb Rig Profile` for the character's skeleton, then assign it to the **Titan Climbing** component. The profile maps the hand and foot effector, IK, and probe-origin bones, and defines the contact curves used by the climbing Animation Blueprint.
 
-## Where should I start?
-
-Start with [Get Started](./get-started/) to complete installation and initial setup, then move to the [API](./api/) reference.
-
-## Why can't the character start climbing?
-
-Check that a `TitanClimbableComponent` is present on the target, its **Surface Asset** is assigned for skeletal targets, and the player's **Climbable Trace Channel** matches the target collision responses. The initial surface must also meet the climbing component's facing, distance, and slope requirements.
-
-## When do I need a Titan Surface asset?
-
-Use one for a climbable skeletal mesh. It stores generated surface triangles and optional BVH data used to follow the animated mesh. Create it from the Content Browser's **Titan Surface** asset type, select the same source mesh as the target actor, generate it, then assign it to **Titan Climbable**.
-
-## Why doesn't limb IK place correctly?
-
-Verify that the assigned `Titan Climb Rig Profile` matches the character skeleton. Check limb effector, IK, and probe-origin bone names, then make sure the Animation Blueprint derives from `UTitanClimbAnimInstance` and supplies the configured contact curves.
-
-## Do I need Titan Walking?
-
-Add `UTitanWalkingComponent` when a character must stand or walk on an animated skeletal target. Ordinary climbing uses `UTitanClimbingComponent`; the walking component specifically produces a local collision patch for moving skeletal surfaces.
-
-## Is the plugin networked?
-
-Yes. The climbing component sends climb and jump state to the server and replicates it for remote presentation. Tune the send rate and remote interpolation settings for your game's networking needs.
+The supplied climbing Animation Blueprint and animation assets target the plugin's reference skeleton. Retarget the Animation Blueprint and its animations to your character skeleton with Unreal Engine's IK Retargeter, then make the retargeted Animation Blueprint inherit from `UTitanClimbAnimInstance`. Reassign any climb-up and climb-exit montages in that blueprint, and verify the curve names match the rig profile.

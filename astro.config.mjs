@@ -15,7 +15,7 @@ export default defineConfig({
 					label: 'Overview',
 					items: [
 						{
-							label: 'Get Started',
+							label: 'How to use',
 							items: [{ autogenerate: { directory: 'get-started' } }],
 						},
 					],
@@ -23,7 +23,13 @@ export default defineConfig({
 				{
 					label: 'Reference',
 					items: [
-						{ label: 'API', slug: 'api' },
+						{
+							label: 'API',
+							items: [
+								{ label: 'Overview', slug: 'api' },
+								{ autogenerate: { directory: 'api' } },
+							],
+						},
 						{ label: 'FAQ', slug: 'faq' },
 					],
 				},

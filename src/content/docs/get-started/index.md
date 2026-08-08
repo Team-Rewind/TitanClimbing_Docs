@@ -1,6 +1,6 @@
 ---
-title: Get Started
-description: Set up the Titan Climbing plugin in an Unreal Engine project.
+title: How to use
+description: Set up Titan Climbing and configure your player, climbable Titan, and Titan Surface.
 ---
 
 ## Before you begin
@@ -20,11 +20,10 @@ The plugin also enables Unreal's `ControlRig` and `FullBodyIK` plugins. Ensure t
 
 ![Titan Climbing Plugin](../../../assets/step0-img.png)
 
-## 2. Complete the setup sequence
+## Setup order
 
-1. Follow [Create Titan](./create-titan/) to make a target actor climbable and generate its `Titan Surface` asset.
-2. Follow [Create Player](./create-player/) to add the player-side components and input bindings.
-3. Assign a compatible `Titan Climb Rig Profile` to the player character's **Titan Climbing** component.
-4. Use an Animation Blueprint based on `UTitanClimbAnimInstance` when limb IK, climb-up, or climb-exit animation is required.
+1. [Create Climbing Player](./create-player/) — add the character-side components, input, rig profile, and Animation Blueprint.
+2. [Create Climbable Titan](./create-titan/) — register a skeletal target as a climbable actor.
+3. [Create Titan Surface](./create-titan-surface/) — generate the animated surface data and assign it to the Titan.
 
 > The player and climbable actor must use a collision/trace setup compatible with the `Climbable Trace Channel` configured on `UTitanClimbingComponent`.

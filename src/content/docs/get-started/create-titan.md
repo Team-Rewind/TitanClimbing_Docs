@@ -1,6 +1,6 @@
 ---
-title: Create Titan
-description: Make a skeletal character or actor available as a climbing surface.
+title: Create Climbable Titan
+description: Make a skeletal character or actor available as an animated climbing surface.
 ---
 
 ## 1. Create a climbable target
@@ -17,26 +17,4 @@ Add a **Titan Climbable** component. It registers the actor with the world surfa
 
 ![Titan Climbable component](../../../assets/image-8.png)
 
-The component's primary setting is its **Surface Asset**. Assign the generated asset after completing the next section.
-
-## 2. Create a Titan Surface asset
-
-In the Content Browser, create a **Titan Surface** asset from the **Miscellaneous** category.
-
-![Create Titan Surface asset](../../../assets/image-10.png)
-
-Set **Source Mesh** to the same skeletal mesh used by the target actor, for example `SKM_Manny_Simple`.
-
-![Set source mesh](../../../assets/image-13.png)
-
-The surface-generation settings let you balance accuracy and runtime cost:
-
-- **Reduction Settings** reduce triangle and vertex count.
-
-Enable **Build Raycast BVH** for efficient runtime raycasts and sphere/capsule sweeps. This is recommended for normal gameplay use.
-
-Click **Generate** in the asset editor toolbar. The viewport displays the generated climb surface: green lines show triangles and red lines show vertex normals.
-
-![Generated surface preview](../../../assets/image-17.png)
-
-Finally, assign this asset to the target's **Titan Climbable** component. The target is now ready for the player to query and climb.
+The component's primary setting is its **Surface Asset**. Follow [Create Titan Surface](../create-titan-surface/) to generate it from the same skeletal mesh, then assign it here. The target is now ready for the player to query and climb.
