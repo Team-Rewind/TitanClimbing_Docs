@@ -3,8 +3,8 @@ title: Titan Climbing Plugin
 description: Overview of the Titan Climbing Unreal Engine plugin.
 template: splash
 hero:
-  tagline: Overview
-  text: Add responsive climbing, moving-surface walking, and procedural limb placement to Unreal Engine characters.
+  tagline: Unreal Engine Plugin
+  text: Climb living worlds. Add responsive climbing, moving-surface walking, and procedural limb placement to Unreal Engine characters.
   actions:
     - text: Get Started
       link: /TitanClimbing_Docs/get-started/
@@ -14,10 +14,38 @@ hero:
       icon: right-arrow
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Build traversal that moves with the world
+
+Titan Climbing lets a character find an eligible surface, anchor to it, and traverse it while the surface animates or moves. Use it with a static climbable mesh or a skeletal **Titan** with generated, skinnable surface data.
 
 <CardGrid stagger>
-	<Card title="Get Started" icon="rocket" href="/TitanClimbing_Docs/get-started/">Set up a climbable character, generate its surface, and connect player input.</Card>
-	<Card title="Runtime API" icon="code" href="/TitanClimbing_Docs/api/">Learn the runtime components, Blueprint entry points, states, animation data, and networking model.</Card>
-	<Card title="FAQ" icon="info" href="/TitanClimbing_Docs/faq/">Find common setup requirements and troubleshooting pointers.</Card>
+	<LinkCard title="Create a climbing player" description="Add the character components, input, rig profile, and animation setup." href="/TitanClimbing_Docs/get-started/create-player/" />
+	<LinkCard title="Create a climbable Titan" description="Register a skeletal actor as an animated climbing target." href="/TitanClimbing_Docs/get-started/create-titan/" />
+	<LinkCard title="Generate a Titan Surface" description="Build the skinnable surface data that the Titan exposes at runtime." href="/TitanClimbing_Docs/get-started/create-titan-surface/" />
+</CardGrid>
+
+## The workflow at a glance
+
+1. **Prepare the player** — attach the Titan Climbing component and provide the climb input.
+2. **Prepare the target** — add a Titan Climbable component to an animated skeletal actor, or configure a static climbable mesh.
+3. **Generate surface data** — create a Titan Surface from the target mesh and assign it back to the target.
+4. **Tune and ship** — use the component settings and Blueprint API to refine traversal, transitions, debugging, and network presentation.
+
+## What is included
+
+<CardGrid>
+	<Card title="Character-side traversal" icon="person">Surface anchoring, limb probes, climb transitions, cling, jumps, and walking on moving Titans.</Card>
+	<Card title="Animated surface queries" icon="search">Skinned surface data with raycasts and sphere/capsule sweeps, backed by an optional BVH.</Card>
+	<Card title="Editor authoring" icon="setting">Titan Surface generation with reduction, welding, normal flattening, and runtime raycast data.</Card>
+</CardGrid>
+
+## Reference
+
+Use the API reference when you need every property and Blueprint entry point, or visit the FAQ for skeleton and Animation Blueprint retargeting requirements.
+
+<CardGrid>
+	<LinkCard title="Runtime API" description="Components, generated surface assets, Blueprint functions, debugging, and network settings." href="/TitanClimbing_Docs/api/" />
+	<LinkCard title="FAQ & troubleshooting" description="Rig profile, retargeting, and reference-skeleton guidance." href="/TitanClimbing_Docs/faq/" />
 </CardGrid>

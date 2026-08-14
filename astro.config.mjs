@@ -10,12 +10,18 @@ export default defineConfig({
 		starlight({
 			title: 'Titan Climbing',
 			description: 'Documentation for the Titan Climbing Unreal Engine plugin.',
+			customCss: ['./src/styles/titan-theme.css'],
+			components: {
+				ThemeProvider: './src/components/FixedDarkTheme.astro',
+				ThemeSelect: './src/components/NoThemeSelect.astro',
+			},
 			sidebar: [
 				{
-					label: 'Overview',
+					label: 'Getting Started',
 					items: [
+						{ label: 'Overview', slug: '' },
 						{
-							label: 'How to use',
+							label: 'Setup Guide',
 							items: [{ autogenerate: { directory: 'get-started' } }],
 						},
 					],
